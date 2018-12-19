@@ -9,9 +9,7 @@ def lambda_handler(event, context):
         'body': json.dumps('Hello from Lambda!')
     }
 
-
-
 def lambda_handler(event, context):
-    ec2 = boto3.resource('ec2')
-    ec2.create_instances(ImageId='ami-09693313102a30b2c', MinCount=1, MaxCount=1)
-    
+    ec2 = boto3.client("ec2")
+    response = ec2.describe_vpcs()
+    print(response)
